@@ -1,0 +1,21 @@
+version: '3'
+services:
+  server:
+    build:
+      context: ./switchstore
+    container_name: switchstore
+    command: python manage.py runserver 0.0.0.0:8000
+    environment:
+      DEBUG: 'True'
+    ports:
+      - 8000:8000
+    volumes:
+      - ./switchstore:/home/python/app
+
+  # db:
+  #   image: postgres:14
+  #   container_name: db_bionica
+  #   ports:
+  #     - 5432:5432
+  #   environment:
+  #     POSTGRES_HOST_AUTH_METHOD: trust
